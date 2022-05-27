@@ -66,3 +66,11 @@ console.time('medir algo');
 //operacion
 console.timeEnd('medir algo');
 
+console.log('ejemplo valor: ');
+let valor1 = 0;
+const sum = (a) => a+1;
+
+let resultadoSumaValor = sum(valor1);
+console.log(resultadoSumaValor);
+console.log(valor1);
+
