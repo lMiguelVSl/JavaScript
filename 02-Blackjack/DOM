@@ -1,4 +1,4 @@
-document
+<!-- document
 #document<!DOCTYPE html><html lang=​"en">​<head>​…​</head>​<body>​<header class=​"titulo">​…​</header>​<div class=​"row mt-2">​…​</div>​ flex <div class=​"row container">​…​</div>​ flex <div class=​"row container">​…​</div>​ flex <div class=​"col">​…​</div>​</div>​<script src=​"assets/​js/​underscore-min.js">​</script>​<script src=​"assets/​js/​juego.js">​</script>​<!-- Code injected by live-server --><script type=​"text/​javascript">​…​</script>​</body>​<div class=​"qt-dropdown ">​…​</div>​<div class=​"qt-info">​…​</div>​<input type=​"search" class=​"qt-dropdown-search" value placeholder=​"Search templates...">​<ul class=​"qt-dropdown-content">​ ​</ul>​<div class=​"g-dropdown-toolbar">​…​</div>​</div>​</html>​
 
 document.querySelector('img') #solo selecciona el primer objeto con el selector ingresado
@@ -21,4 +21,31 @@ document.querySelector('.titulo').innerHTML = 'Miguel'
 'Miguel'
 
 const titulo = document.querySelector('.titulo');
-titulo.innerHTML = 'Hola DOM' #forma de hacer el sistema con mejor rendimiento 
+titulo.innerHTML = 'Hola DOM' #forma de hacer el sistema con mejor rendimiento  -->
+
+// creaar un elemento html dentro de una constante  
+
+const botonNuevo = document.createElement('button');
+
+//insertar elemento en un conjunto de... tipo <div class="botones"><button></button></div>
+
+divbotones.append(botonNuevo);
+
+al ser por referencia puedo modificar el texto del valor en el boton 
+
+botonNuevo.innerText = 'NuevoBoton texto'
+
+//se encuentra sin clases 
+
+botonNuevo.classList.add('btn')
+
+botonNuevo.classList.add('btn-success')
+
+//nuevo input
+
+const input = document.createElement('input')
+
+document.body.append(input);
+
+input.classList.add('form-control');
+
