@@ -14,7 +14,8 @@ let puntosJugador = 0,
 //Referencias
 
 const btnPedir = document.querySelector('#btnPedir'); 
-const puntosJugadorIdx = document.querySelector('#puntosJugador');
+const puntosHTML = document.querySelectorAll('small');
+const divCartaJugador = document.querySelector('#jugador-cartas');
 
 //crear barajas
 const crearDeck = () => {
@@ -68,6 +69,12 @@ btnPedir.addEventListener('click', () => {
 
     const carta = pedirCarta();
     puntosJugador += valorCarta(carta);
-    puntosJugadorIdx.innerHTML = puntosJugador;
+    puntosHTML[0].innerHTML = puntosJugador;
+
+    const imgCarta = document.createElement('img');
+    imgCarta.src = `assets/cartas/${carta}.png`;
+    imgCarta.classList = 'carta';
+
+    divCartaJugador.append(imgCarta); 
 
 });
