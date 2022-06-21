@@ -14,8 +14,12 @@ let puntosJugador = 0,
 //Referencias
 
 const btnPedir = document.querySelector('#btnPedir'); 
+const btnDetener = document.querySelector('#btnDetener'); 
+
+const divCartaJugador    = document.querySelector('#jugador-cartas');
+const divCartaComputador = document.querySelector('#computador-cartas');
+
 const puntosHTML = document.querySelectorAll('small');
-const divCartaJugador = document.querySelector('#jugador-cartas');
 
 //crear barajas
 const crearDeck = () => {
@@ -63,6 +67,44 @@ const valorCarta = (carta) => {
 /* const valor = valorCarta( pedirCarta() );
 console.log({valor}); */
 
+
+//turno de la computadora
+const turnoComputadora = ( puntosMinimos ) => {
+
+    do {
+        const carta = pedirCarta();
+        puntosComputador += valorCarta(carta);
+        puntosHTML[1].innerHTML = puntosComputador;
+    
+        const imgCarta = document.createElement('img');
+        imgCarta.src = `assets/cartas/${carta}.png`;
+        imgCarta.classList = 'carta';
+        divCartaComputador.append(imgCarta); 
+    
+        if ( puntosJugador > 21 ) {
+            break;
+        }
+
+    } while (puntosComputador < puntosJugador && puntosMinimos <= 21);
+
+    setTimeout(() => {
+        
+        if (puntosMinimos > 21)
+        {
+            alert('Gana el computador');
+        } else if (puntosComputador === puntosMinimos) {
+            alert('Empate');
+        } else if(puntosComputador > 21 ){
+            alert('Gana el jugador');
+        } else {
+            alert('Gana el computador');
+        }
+
+    }, 10);
+
+
+}
+
 //Events
 
 btnPedir.addEventListener('click', () => {
@@ -74,7 +116,29 @@ btnPedir.addEventListener('click', () => {
     const imgCarta = document.createElement('img');
     imgCarta.src = `assets/cartas/${carta}.png`;
     imgCarta.classList = 'carta';
-
     divCartaJugador.append(imgCarta); 
 
+    if (puntosJugador>21) {
+
+        console.warn('Lo siento, excediste el puntaje esperado');
+        btnPedir.disabled = true;
+        btnDetener.disabled = true;
+
+        turnoComputadora(puntosJugador);
+
+    } else if (puntosJugador === 21 ) {
+
+        alert('Gana el jugador');
+
+    }
+
 });
+
+btnDetener.addEventListener('click', () => {
+
+    btnPedir.disabled = true;
+    btnDetener.disabled = true;
+    turnoComputadora( puntosJugador );
+
+});
+
